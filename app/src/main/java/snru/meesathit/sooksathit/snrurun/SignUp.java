@@ -132,7 +132,6 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onResponse(Response response) throws IOException {
                 finish();
-
             }
         });
 
