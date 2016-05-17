@@ -1,7 +1,6 @@
 package snru.meesathit.sooksathit.snrurun;
 
 
-
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
@@ -118,10 +117,16 @@ public class SignUp extends AppCompatActivity {
                 .add("Password", passwordString)
                 .add("Avata", avataString)
                 .build();
+       /* RequestBody requestBody = new FormEncodingBuilder()
+                .add("isAdd", "true")
+                .add("Name", nameString)
+                .add("User", userString)
+                .add("Password", passwordString)
+                .add("Avatar", avatarString)
+                .build(); */
         Request.Builder builder = new Request.Builder();
         Request request = builder.url("http://swiftcodingthai.com/snru/add_user_master.php").post(requestBody).build();
-        //Request request = builder.url("http://swiftcodingthai.com/snru/add_user_meen.php").post(requestBody).build();
-
+    //    Request request = builder.url("http://swiftcodingthai.com/snru/add_user_meen.php").post(requestBody).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -131,8 +136,7 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onResponse(Response response) throws IOException {
-
-
+                finish();
             }
         });
 
