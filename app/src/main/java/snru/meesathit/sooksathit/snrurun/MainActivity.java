@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private MyManage myManage;
     private ImageView imageView;
     private EditText userEditText, passwordEditText;
+    private String userString, passwordString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView6);
         userEditText = (EditText) findViewById(R.id.editText);
+        passwordEditText = (EditText) findViewById(R.id.editText2);
 
 
 
@@ -55,6 +57,24 @@ public class MainActivity extends AppCompatActivity {
                 .into(imageView);
 
     } // End onCreate method
+
+    public void clickSignInView(View view){
+        userString = userEditText.getText().toString().trim();
+        passwordString = passwordEditText.getText().toString().trim();
+
+        // Check empty input
+        if (userString.equals("") || passwordString.equals("") ) {
+
+            MyAlert myAlert = new MyAlert();
+            myAlert.myDialog(this, "มีช่องว่าง", "กรุณากรอกทุกช่องคะ");
+
+        } else {
+
+
+
+        }
+
+    }
 
     // Create Inner Class
     public class MySynchronize extends AsyncTask<Void, Void, String> {
