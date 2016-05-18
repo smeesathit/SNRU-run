@@ -8,10 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,11 +22,18 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     private MyManage myManage;
+    private ImageView imageView;
+    private EditText userEditText, passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageView = (ImageView) findViewById(R.id.imageView6);
+        userEditText = (EditText) findViewById(R.id.editText);
+
+
 
         myManage = new MyManage(MainActivity.this);
 
@@ -37,7 +47,12 @@ public class MainActivity extends AppCompatActivity {
         MySynchronize mySynchronize = new MySynchronize();
         mySynchronize.execute();
 
-        
+        // show logo
+        Picasso.with(MainActivity.this)
+                .load("http://swiftcodingthai.com/snru/image/logo_snru.png")
+                .resize(200,250)
+                .into(imageView);
+
     } // End onCreate method
 
     // Create Inner Class
